@@ -7,6 +7,15 @@ import org.w3c.dom.Document;
 
 
 
+// Exemple XML de configuració
+// <cb-config>
+//     <host>localhost</host>
+//     <port>5432</port>
+//     <user>alex</user>
+//     <password>1234</password>
+//     <database>sports</database>
+//  </cb-config>
+
 public class ReadConfigXML {
 	private String host;
 	private String port;

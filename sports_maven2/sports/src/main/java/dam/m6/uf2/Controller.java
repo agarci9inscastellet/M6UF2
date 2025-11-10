@@ -5,33 +5,38 @@ import java.sql.Connection;
 public class Controller {
 	Connection conn;
 
-	public static void main(String[] args) {
-		String currentDir = System.getProperty("user.dir");
-System.out.println("Current directory: " + currentDir);
+	public static void main(String[] args) { 
+		System.out.println("Current directory (aquí heu de posar el XML): " + System.getProperty("user.dir"));
 		Controller controller = new Controller();
 		controller.init();
 	}
 
 	private void init() {
 
-		Connection con = ConnectionManager.getConnection("database.xml");
+		this.conn = ConnectionManager.getConnection("database.xml");
 		MainView mainView = new MainView();
 
-		UserDAO userDAO = new UserDAO(conn);
+		UserPgDAO userDAO = new UserPgDAO(conn);
 
 		// mainView.mainMenu()
 		int option = mainView.mainMenu();
 		// switch option
+		switch (option) {
+			case 1:
+					mainView.showUsers(userDAO.getAll());
+				break;
+			
+			case 2:
+					User newUser = mainView.addUserForm();
+					userDAO.add(newUser);
+		
+			default:
+				break;
+		}
 		// Afegir Usuari
 		// Llistar usuaris
 
-		// SWITCH afegir usuari ---> crido a la vista addUserForm
-		User user = mainView.addUserForm();
-		if (!userDAO.userExists(user.name)) {
-			userDAO.add(user);
-		}
 
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'init'");
+
 	}
 }

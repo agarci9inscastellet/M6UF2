@@ -1,6 +1,8 @@
 package dam.m6.uf2;
 
+
 import java.sql.SQLException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -28,7 +30,7 @@ public class ConnectionManager {
         urlstring = "jdbc:postgresql://" + host + ":" + port + "/" + database;
 
 
-        System.out.println(host + port + database + username);
+        System.out.println("DEBUG: "+ host + " / " + port + " / "+ database + " / "+ username);
 
 
         try {
