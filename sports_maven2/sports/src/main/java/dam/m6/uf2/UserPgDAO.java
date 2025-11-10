@@ -23,14 +23,8 @@ public class UserPgDAO implements DAO<User> {
 
         if (conn == null)
             return;
-        try (Statement statement = conn.createStatement()) {
 
-            // ResultSet resultSet = statement.executeQuery("INSERT ...");
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        String sql = "INSERT ...";
 
         throw new UnsupportedOperationException("Unimplemented method 'add'");
 

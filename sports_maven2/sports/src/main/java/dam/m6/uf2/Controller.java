@@ -17,7 +17,6 @@ public class Controller {
 		MainView mainView = new MainView();
 		UserPgDAO userPgDAO = new UserPgDAO(conn);
 
-		// mainView.mainMenu()
 		int option = mainView.mainMenu();
 		// switch option
 		switch (option) {
@@ -27,7 +26,12 @@ public class Controller {
 			
 			case 2:
 					User newUser = mainView.addUserForm();
-					userPgDAO.add(newUser);
+					if (newUser != null){
+						userPgDAO.add(newUser);
+					}
+					else{
+						//mainView.showError("Error al crear l'usuari");
+					}
 		
 			default:
 				break;
