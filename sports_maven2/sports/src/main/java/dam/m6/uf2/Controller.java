@@ -15,20 +15,19 @@ public class Controller {
 
 		this.conn = ConnectionManager.getConnection("database.xml");
 		MainView mainView = new MainView();
-
-		UserPgDAO userDAO = new UserPgDAO(conn);
+		UserPgDAO userPgDAO = new UserPgDAO(conn);
 
 		// mainView.mainMenu()
 		int option = mainView.mainMenu();
 		// switch option
 		switch (option) {
 			case 1:
-					mainView.showUsers(userDAO.getAll());
+					mainView.showUsers(userPgDAO.getAll());
 				break;
 			
 			case 2:
 					User newUser = mainView.addUserForm();
-					userDAO.add(newUser);
+					userPgDAO.add(newUser);
 		
 			default:
 				break;

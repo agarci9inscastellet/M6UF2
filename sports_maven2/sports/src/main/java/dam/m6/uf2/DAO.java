@@ -7,5 +7,6 @@ public interface DAO<T> {
    List<T> getAll();
    // List<T> getAll(String filter);
    // boolean checkPass(String name, String pass);
-   // delete / update
+   // delete 
+   // update
 }

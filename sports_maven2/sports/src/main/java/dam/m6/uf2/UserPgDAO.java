@@ -41,16 +41,15 @@ public class UserPgDAO implements DAO<User> {
         List<User> users = new ArrayList<>();
 
           String sql = "SELECT * FROM users";
-
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                users.add(new User(
-                        rs.getString("name"),
-                        rs.getString("pass")
-                        ));
-            }
+        try {
+            
+       
+    
+        ///Aqui
+        ///  cal fer el query i recòrrer el ResultSet per afegir els usuaris 
+        /// 
+        /// a la llista users
+        throw new SQLException("Not implemented yet");
 
 
         } catch (SQLException e) {
@@ -60,14 +59,25 @@ public class UserPgDAO implements DAO<User> {
         return users;
     }
 
-    public void callFunction(String p1, String p2) {
+    public String callFunction(String p1, String p2) {
         CallableStatement cStmt = null;
         try {
-            cStmt = conn.prepareCall    ("{call get_user_name(?,?)}");
-            cStmt.setString(1, p1);
-            cStmt.setString(2, p2);
-            cStmt.execute();
-            cStmt.registerOutParameter(1, Types.INTEGER);
+          String call = "{ ? = call get_user_name(?, ?) }";
+            try (CallableStatement cs = conn.prepareCall(call)) {
+
+                // 1️⃣ Register the return value (first ?)
+                cs.registerOutParameter(1, Types.VARCHAR);
+
+                // 2️⃣ Set input parameters
+                cs.setString(2, p1);
+                cs.setString(3, p2);
+
+                // 3️⃣ Execute the call
+                cs.execute();
+
+                // 4️⃣ Retrieve the returned value
+                String result = cs.getString(1);
+                return result;
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block

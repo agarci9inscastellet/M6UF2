@@ -12,7 +12,7 @@ public class ConnectionManager {
     private static String database = "";
     private static String username = "";
     private static String password = "";
-    private static Connection con;
+    private static Connection con = null;
     private static String urlstring;
 
     public ConnectionManager() {
@@ -27,16 +27,18 @@ public class ConnectionManager {
         username = config.getUser();
         password = config.getPassword();
 
-        urlstring = "jdbc:postgresql://" + host + ":" + port + "/" + database;
+        urlstring = "jdbc:....et...etc"; // Aquí heu de construir la URL de connexió
 
 
-        System.out.println("DEBUG: "+ host + " / " + port + " / "+ database + " / "+ username);
+        System.out.println("DEBUG: Dades obtingudes del fitxer XML -> "+ host + " / " + port + " / "+ database + " / "+ username);
 
 
         try {
             try {
-                con = DriverManager.getConnection(urlstring, username, password);
-                System.out.println("Connection established successfully.");
+                // Aqui heu de connectar amb la base de dades
+                //System.out.println("Connection established successfully.");
+                throw new SQLException("Not implemented yet" );
+
             } catch (SQLException ex) {
                 // log an exception. fro example:
                 System.out.println("Failed to create the database connection."); 

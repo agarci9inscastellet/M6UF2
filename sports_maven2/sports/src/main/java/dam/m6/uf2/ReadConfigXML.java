@@ -6,7 +6,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 
-
 // Exemple XML de configuració
 // <cb-config>
 //     <host>localhost</host>
@@ -35,25 +34,17 @@ public class ReadConfigXML {
 		return port;
 	}
 
-
-
 	public String getUser() {
 		return user;
 	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public String getDatabase() {
 		return database;
 	}
-
-
 
 	public ReadConfigXML(String config_file) {
 		File file = new File(config_file);
@@ -71,7 +62,6 @@ public class ReadConfigXML {
 System.out.println("host");
 		} catch (Exception e) {
 			System.out.println("Error" + e.getMessage());
-
 		}
 	}
 }
